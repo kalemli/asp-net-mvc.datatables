@@ -8,6 +8,8 @@ namespace DataList.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext Context = new ApplicationDbContext();
+
         public ActionResult Index()
         {
             return View();
@@ -25,6 +27,12 @@ namespace DataList.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Persons()
+        {
+            var persons = Context.Persons.ToList();
+            return View(persons);
         }
     }
 }

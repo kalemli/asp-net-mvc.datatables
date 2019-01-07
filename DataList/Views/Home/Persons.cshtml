@@ -1,0 +1,43 @@
+﻿@model List<DataList.Models.Person>
+@{
+    ViewBag.Title = "Persons";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Persons</h2>
+
+<table id="persons" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Code</th>
+            <th>Firstname</th>
+            <th>Surname</th>
+            <th>Lastname</th>
+            <th>Workplace</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var person in Model)
+        {
+        <tr>
+            <td>@person.Id</td>
+            <td>@person.Code</td>
+            <td>@person.Firstname</td>
+            <td>@person.Surname</td>
+            <td>@person.Lastname</td>
+            <td>@person.Workplace</td>
+            <td>@person.Address</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            $('#persons').DataTable();
+        });
+    </script>
+}
