@@ -31,8 +31,7 @@ namespace DataList.Controllers
 
         public ActionResult Persons()
         {
-            var persons = Context.Persons.ToList();
-            return View(persons);
+            return View();
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿@model List<DataList.Models.Person>
-@{
+﻿@{
     ViewBag.Title = "Persons";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -19,25 +18,41 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var person in Model)
-        {
-        <tr>
-            <td>@person.Id</td>
-            <td>@person.Code</td>
-            <td>@person.Firstname</td>
-            <td>@person.Surname</td>
-            <td>@person.Lastname</td>
-            <td>@person.Workplace</td>
-            <td>@person.Address</td>
-        </tr>
-        }
     </tbody>
 </table>
 
 @section scripts {
     <script>
         $(document).ready(function () {
-            $('#persons').DataTable();
+            $('#persons').DataTable({
+                ajax: {
+                    url: "/api/persons",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "id"
+                    },
+                    {
+                        data: "code"
+                    },
+                    {
+                        data: "firstname"
+                    },
+                    {
+                        data: "surname"
+                    },
+                    {
+                        data: "lastname"
+                    },
+                    {
+                        data: "workplace"
+                    },
+                    {
+                        data: "address"
+                    }
+                ]
+            });
         });
     </script>
 }
